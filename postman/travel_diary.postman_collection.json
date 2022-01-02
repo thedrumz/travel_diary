@@ -8,12 +8,21 @@
 	},
 	"item": [
 		{
-			"name": "localhost:3000",
+			"name": "users/register",
 			"request": {
-				"url": "localhost:3000",
-				"method": "GET",
-				"header": [],
-				"body": {},
+				"url": "localhost:3000/users/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"harry_potter\",\n\t\"password\": \"alohomora\",\n\t\"email\": \"harry.potter@email.com\"\n}"
+				},
 				"description": ""
 			},
 			"response": []
