@@ -1,0 +1,22 @@
+{
+	"variables": [],
+	"info": {
+		"name": "travel_diary",
+		"_postman_id": "9d3f8265-b556-0d27-a929-e8642cf41cf6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000",
+			"request": {
+				"url": "localhost:3000",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
