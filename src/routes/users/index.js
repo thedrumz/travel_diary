@@ -1,7 +1,9 @@
 const router = require('express').Router()
-const { postRegister, postLogin } = require('../../controllers/users')
+const { postRegister, postLogin, patchAvatar } = require('../../controllers/users')
+const isAuthorized = require('../../middlewares/isAuthorized')
 
-router.use('/register', postRegister)
-router.use('/login', postLogin)
+router.post('/register', postRegister)
+router.post('/login', postLogin)
+router.patch('/avatar', isAuthorized, patchAvatar)
 
 module.exports = router
