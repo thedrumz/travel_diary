@@ -46,6 +46,33 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "users/avatar",
+			"request": {
+				"url": "localhost:3000/users/avatar",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDEyNTMwNTMsInVzZXIiOnsiaWQiOjF9LCJpYXQiOjE2NDEyNDk0NTN9.xPCnahfNmYA03XvK6B3lp6pOcQVzoQ_-0KVj8cN5ZZY",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"value": "",
+							"description": "",
+							"type": "file"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
