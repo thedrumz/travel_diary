@@ -1,9 +1,7 @@
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const encryptor = require('../../shared/encryptor')
+const { generateToken } = require('../../shared/token')
 const credentialsSchema = require('../../validationSchemas/credentialsSchema')
 const usersRepository = require('../../repository/mysql/mysqlUsersRepository')
-
-const { JWT_EXPIRES_AFTER, JWT_PRIVATE_KEY } = process.env
 
 const postLogin = async (req, res) => {
   const credentials = req.body
@@ -31,16 +29,13 @@ const postLogin = async (req, res) => {
     return
   }
   
-  if (!await bcrypt.compare(credentials.password, user.password)) {
+  if (!await encryptor.compare(credentials.password, user.password)) {
     res.status(403)
     res.end('Invalid credentials')
     return
   }
 
-  const token = jwt.sign({
-    exp: Math.floor(Date.now() / 1000) + Number(JWT_EXPIRES_AFTER),
-    user: { id: user.id }
-  }, JWT_PRIVATE_KEY);
+  const token = generateToken({ payload: { user: { id: user.id } } })
 
   res.status(200)
   res.send({ token })

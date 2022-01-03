@@ -1,10 +1,8 @@
-const bcrypt = require('bcrypt')
 const crypto = require('crypto')
+const encryptor = require('../../shared/encryptor')
 const userSchema = require('../../validationSchemas/userSchema')
 const usersRepository = require('../../repository/mysql/mysqlUsersRepository')
 const notifier = require('../../notifier/email/emailNotifier')
-
-const { SALT_ROUNDS } = process.env
 
 const postRegister = async (req, res) => {
   const user = req.body
@@ -34,13 +32,12 @@ const postRegister = async (req, res) => {
 
   let encryptedPassword
   try {
-    encryptedPassword = await bcrypt.hash(user.password, Number(SALT_ROUNDS))
+    encryptedPassword = await encryptor.encrypt(user.password)
   } catch (error) {
     res.status(500)
     res.end(error.message)
     return
   }
-
 
   const registrationCode = crypto.randomBytes(40).toString('hex')
 
