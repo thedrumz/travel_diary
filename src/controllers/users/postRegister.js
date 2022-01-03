@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const crypto = require('crypto')
+const userSchema = require('../../validationSchemas/userSchema')
 const usersRepository = require('../../repository/mysql/mysqlUsersRepository')
 const notifier = require('../../notifier/email/emailNotifier')
 
@@ -8,9 +9,11 @@ const { SALT_ROUNDS } = process.env
 const postRegister = async (req, res) => {
   const user = req.body
 
-  if (!user.email || !user.password) {
+  try {
+    await userSchema.validateAsync(user)
+  } catch (error) {
     res.status(400)
-    res.end('You should provide an email and password')
+    res.send(error.message)
     return
   }
 
