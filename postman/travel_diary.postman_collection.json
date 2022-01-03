@@ -26,6 +26,26 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "users/login",
+			"request": {
+				"url": "localhost:3000/users/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"alohomora\",\n\t\"email\": \"harry.potter@email.com\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

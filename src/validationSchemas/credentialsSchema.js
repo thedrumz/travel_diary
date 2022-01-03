@@ -1,18 +1,6 @@
 const Joi = require('joi');
 
-const userSchema = Joi.object({
-  username: Joi
-    .string()
-    .required()
-    .min(3)
-    .max(50)
-    .messages({
-      'any.required': '[username] is required',
-      'string.empty': '[username] is required',
-      'string.min': '[username] should be between 3 and 50 characters',
-      'string.max': '[username] should be between 3 and 50 characters'
-    }),
-
+const credentialsSchema = Joi.object({
   email: Joi
     .string()
     .required()
@@ -34,4 +22,4 @@ const userSchema = Joi.object({
     })
 });
 
-module.exports = userSchema;
+module.exports = credentialsSchema;
